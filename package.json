@@ -16,7 +16,8 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.3",
