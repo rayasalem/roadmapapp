@@ -25,6 +25,7 @@ app.use(helmet());
 app.use(requestIdMiddleware);
 app.use(requestLoggerMiddleware);
 const isDev = env.NODE_ENV !== 'production';
+const productionOrigins = env.CLIENT_URL.split(',').map((u) => u.trim()).filter(Boolean);
 app.use(
   cors({
     origin: isDev
@@ -35,9 +36,12 @@ app.use(
           'http://127.0.0.1:8081',
           'http://127.0.0.1:8082',
           'http://127.0.0.1:8083',
+          'https://roadmapapp.vercel.app',
           env.CLIENT_URL,
         ]
-      : env.CLIENT_URL,
+      : productionOrigins.length > 0
+        ? productionOrigins
+        : ['https://roadmapapp.vercel.app'],
     credentials: true,
   })
 );
