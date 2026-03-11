@@ -4,6 +4,7 @@
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "node scripts/start.js",
+    "start:render": "node expo/AppEntry.js",
     "build": "node node_modules/expo/bin/cli export --platform web",
     "build:web": "node node_modules/expo/bin/cli export --platform web",
     "vercel-build": "node node_modules/expo/bin/cli export --platform web",

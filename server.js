@@ -10,6 +10,16 @@ const url = require('url');
 const PORT = process.env.PORT || 3000;
 const DIST = path.resolve(__dirname, 'dist');
 
+const indexHtml = path.join(DIST, 'index.html');
+if (!fs.existsSync(DIST) || !fs.statSync(DIST).isDirectory()) {
+  console.error('ERROR: "dist" folder not found. Run: npm run build');
+  process.exit(1);
+}
+if (!fs.existsSync(indexHtml)) {
+  console.error('ERROR: dist/index.html not found. Run: npm run build');
+  process.exit(1);
+}
+
 const mime = {
   '.html': 'text/html',
   '.js': 'application/javascript',
@@ -54,4 +64,9 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Serving dist on port ${PORT}`);
+});
+
+server.on('error', (err) => {
+  console.error('Server error:', err && err.message ? err.message : err);
+  process.exit(1);
 });

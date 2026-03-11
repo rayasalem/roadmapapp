@@ -1,16 +1,12 @@
 # نشر الفرونتاند (Expo Web) على Render
 
-## ⚠️ إذا ظهر خطأ "Cannot find module 'expo/AppEntry.js'"
+## إصلاح خطأ "Cannot find module 'expo/AppEntry.js'" (تم)
 
-الخدمة تستخدم أوامر افتراضية خاطئة. **يجب** ضبطها يدوياً:
+المشروع يتضمن الآن الملف **expo/AppEntry.js** الذي يشغّل الخادم عند تنفيذ `node expo/AppEntry.js` (أمر Render الافتراضي). تأكد فقط أن **Build Command** هو:
 
-1. **Dashboard → خدمتك → Settings → Build & Deploy**
-2. **Build Command:** غيّره إلى  
-   `npm install && npm run build`
-3. **Start Command:** غيّره إلى  
-   `npm start`
+`npm install && npm run build`
 
-ثم **Manual Deploy → Deploy latest commit**. بعد البناء، `npm start` يشغّل خادم التطبيق (يخدم مجلد `dist`).
+ليتم إنشاء مجلد `dist` قبل التشغيل. **Start Command** يمكن أن يبقى الافتراضي أو: `node expo/AppEntry.js`.
 
 ---
 

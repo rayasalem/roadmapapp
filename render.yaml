@@ -1,7 +1,8 @@
-# Render Web Service – يُستخدم عند ربط المستودع أو إعداد الخدمة
+# Render Web Service – لا حاجة لتعديل Start Command يدوياً
+# "node expo/AppEntry.js" (الافتراضي من main) يشغّل الخادم بعد البناء
 services:
   - type: web
     name: roadmapapp
     env: node
     buildCommand: npm install && npm run build
-    startCommand: npm start
+    startCommand: node expo/AppEntry.js
